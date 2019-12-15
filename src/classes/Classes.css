@@ -1,0 +1,9 @@
+.Classes-Wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.Card-Wrapper{
+    margin: 50px;
+}
