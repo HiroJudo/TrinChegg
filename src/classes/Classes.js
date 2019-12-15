@@ -21,7 +21,7 @@ class Classes extends React.Component{
     render() {
         let class_cards = this.state.classes.map((value,index) =>
                 <div className="Card-Wrapper" >
-                    <Card title={value.name} extra={<a href="#">More</a>} style={{ width: 300 }}>
+                    <Card title={value.className} extra={<a href="#">More</a>} style={{ width: 300 }}>
                         <p>Teacher: {value.prof}</p>
                         <p>Term: {value.term}</p>
                     </Card>
