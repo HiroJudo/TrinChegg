@@ -2,6 +2,7 @@ import React from 'react';
 import {Breadcrumb, Card} from 'antd';
 import './Classes.css'
 import ChegTrin from "../ChegTrin";
+import { Link } from "react-router-dom";
 
 class Classes extends React.Component{
 
@@ -20,11 +21,14 @@ class Classes extends React.Component{
 
     render() {
         let class_cards = this.state.classes.map((value,index) =>
-                <div className="Card-Wrapper" >
-                    <Card title={value.className} extra={<a href="#">More</a>} style={{ width: 300 }}>
+                <div className="Card-Wrapper">
+                    <Link to={"/classes/"+value._id}>
+                    <Card title={value.className} extra={<a href="#">More</a>} style={{ width: 300, height: 250}}>
                         <p>Teacher: {value.prof}</p>
                         <p>Term: {value.term}</p>
+                        <p>Description: {value.description}</p>
                     </Card>
+                    </Link>
                 </div>
             );
 

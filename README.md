@@ -1,4 +1,10 @@
+## Example
+
+https://github.com/beaucarnes/mern-exercise-tracker-mongodb
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+https://hackernoon.com/tutorial-creating-and-managing-a-node-js-server-on-aws-part-1-d67367ac5171
 
 ## Available Scripts
 

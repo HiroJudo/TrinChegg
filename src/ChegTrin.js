@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import './ChegTrin.css';
 import Classes from './classes/Classes';
+import {Link }from 'react-router-dom'
 
 const { Header, Content, Footer } = Layout;
 
@@ -10,9 +11,11 @@ class ChegTrin extends React.Component{
         return (
             <Layout className="layout">
                 <Header className="Home-Header">
+                    <Link to="/">
                     <div>
                         <p className="Home-Title">TrinChegg</p>
                     </div>
+                    </Link>
                     <Menu
                         theme="dark"
                         mode="horizontal"
