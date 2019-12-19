@@ -1,3 +1,14 @@
 .List-container{
     margin: 3%;
 }
+
+.Question-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Question-form {
+    display: flex;
+    flex-direction: column;
+}

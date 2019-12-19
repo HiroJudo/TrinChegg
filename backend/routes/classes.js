@@ -57,6 +57,7 @@ router.route('/update/:id').post((req, res) => {
 });
 
 router.route('/question/add/:id').post((req, res) => {
+    console.log(req.params.id);
     console.log(req.body.question);
     Classes.updateOne(
             {_id: req.params.id},

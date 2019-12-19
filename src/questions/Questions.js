@@ -1,8 +1,10 @@
 import React from 'react';
 import './Questions.css'
 import ChegTrin from "../ChegTrin";
-import {List, Avatar, Breadcrumb} from 'antd';
+import {List, Avatar, Breadcrumb, Collapse, Button} from 'antd';
 import {Link} from 'react-router-dom';
+
+const { Panel } = Collapse;
 
 class Questions extends React.Component{
 
@@ -10,7 +12,7 @@ class Questions extends React.Component{
         super();
         this.state ={
             clName:null,
-            questions:[]
+            questions:[],
         }
     }
 
@@ -22,29 +24,44 @@ class Questions extends React.Component{
     }
 
     render() {
+        const {classId} = this.props.match.params;
+
+        let panels = this.state.questions.map(
+            (value, index) => {
+                return (
+                    <Panel header={value.title}>
+                        <ul>
+                        {
+                            value.answers.map(
+                                (val,i) => <li>{val.answer}</li>
+                            )
+                        }
+                        </ul>
+                    </Panel>
+                );
+            }
+        );
 
         return (
             <ChegTrin headernum="1">
-                <Breadcrumb style={{ margin: '16px 0' }}>
-                    <Breadcrumb.Item>Home</Breadcrumb.Item>
-                    <Link to="/classes">
-                    <Breadcrumb.Item>Classes</Breadcrumb.Item>
+                <div className="Question-header">
+                    <Breadcrumb style={{ margin: '16px 0' }}>
+                        <Breadcrumb.Item>Home</Breadcrumb.Item>
+                        <Link to="/classes">
+                        <Breadcrumb.Item>Classes</Breadcrumb.Item>
+                        </Link>
+                        <Breadcrumb.Item>{this.state.clName}</Breadcrumb.Item>
+                    </Breadcrumb>
+                    <Link to={"/classes/add/questions/"+classId}>
+                        <Button type="primary"  style={{marginTop: '10px',marginRight:'20px'}}>
+                            Add Question
+                        </Button>
                     </Link>
-                    <Breadcrumb.Item>{this.state.clName}</Breadcrumb.Item>
-                </Breadcrumb>
+                </div>
                 <div className="List-container">
-                    <List
-                        itemLayout="horizontal"
-                        dataSource={this.state.questions}
-                        renderItem={item => (
-                            <List.Item>
-                                <List.Item.Meta
-                                    avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                                    title={<a href="https://ant.design">{item.title}</a>}
-                                />
-                            </List.Item>
-                        )}
-                    />
+                    <Collapse>
+                        {panels}
+                    </Collapse>
                 </div>
             </ChegTrin>
         )
