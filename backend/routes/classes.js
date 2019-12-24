@@ -69,10 +69,11 @@ router.route('/question/add/:id').post((req, res) => {
 });
 
 router.route('/answers/add/:id/:questionId').post((req, res) => {
+    console.log("adding question");
     Classes.updateOne(
             {_id:req.params.id, 'questions._id':req.params.questionId},
             {$push: {'questions.$.answers': req.body.answer}},
-            (err,obj) => {console.log(obj);}
+            // (err,obj) => {console.log(obj);}
         )
         .then(cl => res.json(cl)).catch(err => res.status(400).json(err))
         .catch(err => res.status(400).json(err));
